@@ -11,7 +11,7 @@
 <asssign_stmt> ::= <identifier> = <expression>;
 <const> ::= <int_const> | <string_const> | <char_const> | <bool_const>
 
-<expression> ::= <identifier> | <const> | <expression> <op> <expression> | <op> <expression> 
+<expression> ::= <identifier> | <const> | <expression> <op> <expression> | <op> <expression> | (<expression>) |
 <op> ::= + | - | * | / | % | < | > | <= | >= | == | != | and | or | not
 
 <block> ::= TAB <stmt> | TAB <stmt> <block>

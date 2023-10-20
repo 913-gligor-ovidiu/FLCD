@@ -1,0 +1,5 @@
+var 1a: int; // error 1
+var b: string;
+
+b = "$smth; // error:  $ not in the alphabet and the " were not closed
+
