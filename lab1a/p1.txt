@@ -1,0 +1,16 @@
+//p1: compute the max of 3 numbers
+
+var a, b, c, max: int;
+a=read();
+b=read();
+c=read();
+
+max=a;
+
+if b>=max:
+	max=b;
+	
+if c>=max:
+	max=c;
+
+print(max);

@@ -1,0 +1,13 @@
+//p3: verify if a number is prime
+
+var n, i:int;
+n=read();
+var ok: bool;
+ok = true;
+if n%2==0:
+	ok=false;
+
+for(i=3;i*i<=n;i+=2):
+	if n%i==0:
+		ok = false;
+		

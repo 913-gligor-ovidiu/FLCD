@@ -1,0 +1,29 @@
+Alphabet:
+a. Upper(A-Z) and lower(a-z) of the English alphabet.
+b. Underline '_'
+c. Digits (0-9)
+
+Lexic:
+a. Special symbols representing:
+    i. operators + - * / = < > <= >= == % !
+    ii. separators [] () : ; , space
+    iii. keywords: var, int, string, char, bool, else, if, for, while, read, print, true, false, return, and, or  
+b. Identifiers: a sequence of letters, digits starting with a letter 
+<ld>::= <letter> | <digit> 
+<sq-ld> ::= <ld> | <ld> <sq-ld> 
+<identifier> ::= <letter> | <letter> <sq-ld> 
+<letter> ::= a | b | c | ... | z | A | B | C | ... | Z
+<digit> ::= 0 | 1 | 2 | ... | 9  
+
+c. Constants
+ <numeric_constant> ::= 0 | <number> | -<number>
+ <number> ::= <non_zero_digit> | <non_zero_digit> <digit_seq>
+ <digit_seq> ::= <digit> | <digit> <digit_seq>
+ <non_zero_digit> ::= 1 | 2 | 3 | ... | 9	
+    
+ <char_constant> ::= '<char>'
+    <char> ::= <letter> | <digit>
+ 
+<string_constant> ::= "<string>"
+    <string> ::= <char> | <char> <string>
+

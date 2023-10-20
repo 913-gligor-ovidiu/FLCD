@@ -1,0 +1,20 @@
+<declaration_stmt> ::= var <indetifiers_lits>: <type>;
+<indetifiers_lits> ::= <identifier> | <identifier> , <identifier_list> | 
+                   ::= <identifier>[] | <identifier>[], <identifier_list>
+<type> ::= int | string | char | bool
+
+<stmt> ::= <input_stmt> | <output_stmt> | <return_stmt> | <assign_stmt> | <if_stmt> | 
+       ::=<for_stmt> | <while_stmt> | <declaration_stmt>
+<input_stmt> ::= read(<identifier>);
+<output_stmt> ::= print(<identifier>);
+<return_stmt> ::= return <identifier>; | return true; | return false; | return <const>;
+<asssign_stmt> ::= <identifier> = <expression>;
+<const> ::= <int_const> | <string_const> | <char_const> | <bool_const>
+
+<expression> ::= <identifier> | <const> | <expression> <op> <expression> | <op> <expression> 
+<op> ::= + | - | * | / | % | < | > | <= | >= | == | != | and | or | not
+
+<block> ::= TAB <stmt> | TAB <stmt> <block>
+<if_stmt> ::= if (<expression>): <block> | if (<expression>): <block> else: <block>
+<for_stmt> ::= for (<assign_stmt>;<expression>;<assign_stmt>): <block>
+<while_stmt> ::= while (<expression>): <block>
