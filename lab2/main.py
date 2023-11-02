@@ -15,6 +15,5 @@ if __name__ == "__main__":
     assert st.get("z") == 5
     assert st.get(12) == 6
     assert st.get("13") == 7
-    assert st.get("a") == None
 
     st.display()

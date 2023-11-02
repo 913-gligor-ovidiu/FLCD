@@ -1,0 +1,16 @@
+detect(token):
+    if(token is operator, separator or kewword)
+        addToPif(token,0)
+    else if token is identifier:
+        pos=st.pos(token) ## change st do add automatically on get
+        addToPif(39,pos)
+    else if token is constant:
+        pos=st.pos(token) ## change st do add automatically on get
+        addToPif(40,pos)
+    else:
+        raiser lexical error
+
+
+1b - two symbol tables one for identifier, one for constant
+
+UPDATE DOCUMENTATION

@@ -1,0 +1,8 @@
+var n, s, i, x: integer;
+n=read();
+s=0;
+for(i=0;i<n;i++):
+	x=read();
+	s+=x;
+	
+print(s);

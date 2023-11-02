@@ -1,0 +1,17 @@
+var a, b, c, max: integer;
+var s: string;
+a=read();
+b=read();
+c=read();
+
+s = "mere";
+
+max=a;
+
+if b>=max:
+	max=b;
+	
+if c>=max:
+	max=c;
+
+print(max);

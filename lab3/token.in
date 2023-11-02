@@ -21,8 +21,10 @@ _
 "
 :
 ;
+&&
+||
 var
-int
+integer
 string
 bool
 break
@@ -37,5 +39,3 @@ print
 true
 false
 return
-and
-or
