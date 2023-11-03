@@ -18,7 +18,6 @@ class Scanner:
         lines = []
         with open(file_path,"r") as f:
             for line in f.readlines():
-                if line.strip():
                     lines.append(line)
         return lines
         
@@ -53,7 +52,7 @@ class Scanner:
         return False
     
     def isCharConstant(self,token):
-        regexChar = r"^[a-zA-Z0-9]$"
+        regexChar = r"^[a-zA-Z0-9_ ?:*^+=.!]$"
         if re.match(regexChar, token):
             return True
         return False
@@ -64,6 +63,9 @@ class Scanner:
         stringFlag = 0 
         charFlag = 0
         for line in self.program:
+            if line.strip() == "":
+                lineNumber += 1
+                continue
             line = line.strip()
             for token in self.tokens:
                 line = line.replace(token," "+token+" ")
