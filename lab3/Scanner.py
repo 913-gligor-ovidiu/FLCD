@@ -68,15 +68,31 @@ class Scanner:
                 continue
             line = line.strip()
             for token in self.tokens:
-                line = line.replace(token," "+token+" ")
+                if token in line:
+                    line = line.replace(token," "+token+" ") #add spaces around tokens            
 
-            line = re.sub(r' +',' ',line)
+
+            line = re.sub(r' +',' ',line) # remove multiple spaces from around tokens and keep only 1
             line = line.strip() # remove spaces from beggining and end of line
-            lineTokens = line.split(" ")
+            lineTokens = line.split(" ") # split line into tokens
+            aux = []
+            for i in range(len(lineTokens)): # merge <,>,=,! with = if neccesary
+               if lineTokens[i] == "=":
+                   if lineTokens[i-1] == "<" or lineTokens[i-1] == ">" or lineTokens[i-1] == "!" or lineTokens[i-1] == "=":
+                       aux.pop()
+                       aux.append(lineTokens[i-1]+lineTokens[i])
+                       continue
+                   else :
+                       aux.append(lineTokens[i])
+               else:
+                     aux.append(lineTokens[i])
+                       
+            lineTokens = aux
             print(lineTokens)
             stringConst = ""
             charConst = ""
             for lineToken in lineTokens:
+                #check if string or char const is opened and if it is add the token to the const
                 if lineToken in self.tokens and stringFlag == 1 and lineToken != "\"":
                     stringConst += lineToken +" "
                     continue
@@ -84,8 +100,8 @@ class Scanner:
                     charConst += lineToken
                     continue
                 if lineToken in self.tokens:
-                    self.pif.add(self.tokens[lineToken],0)
-                    if lineToken =="\"" and stringFlag == 1:
+                    self.pif.add(self.tokens[lineToken],0) # add token to pif
+                    if lineToken =="\"" and stringFlag == 1: 
                         if self.isStringConstant(stringConst):
                             self.pif.add(2, self.constants.get(stringConst))
                         else:
@@ -124,7 +140,7 @@ class Scanner:
         return self.pif, self.constants, self.identifiers
 
 
-progPath = "lab3/p1.txt"
+progPath = "lab3/p1err.txt"
 tokensPath = "lab3/token.in"
 scanner = Scanner(progPath, tokensPath)
 
