@@ -17,4 +17,6 @@ class SymbolTable:
     def display(self):
         return self.table.display()
     
+    def __str__(self):
+        return str(self.table)
 

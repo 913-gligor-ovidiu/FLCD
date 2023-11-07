@@ -59,3 +59,6 @@ class HashTable:
                 print(f"Slot {i}: {item[0]} => {item[1]}")
             else:
                 print(f"Slot {i}: Empty")
+
+    def __str__(self) -> str:
+        return str(self.table)

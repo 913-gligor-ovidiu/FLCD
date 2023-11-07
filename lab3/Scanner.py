@@ -140,7 +140,7 @@ class Scanner:
         return self.pif, self.constants, self.identifiers
 
 
-progPath = "lab3/p1err.txt"
+progPath = "lab3/p1.txt"
 tokensPath = "lab3/token.in"
 scanner = Scanner(progPath, tokensPath)
 
@@ -155,3 +155,12 @@ print("\n\n")
 
 print("Identifiers:")
 identifiers.display()
+
+with open ("lab3/pif.out","w") as f:
+    for pair in pif.pif:
+        f.write(str(pair)+"\n")
+
+with open ("lab3/St.out","w") as f:
+    f.write(str(identifiers))
+    f.write("\n")
+    f.write(str(constants))
