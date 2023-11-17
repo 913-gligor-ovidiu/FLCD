@@ -70,7 +70,6 @@ if __name__ == '__main__':
     print('5. Display final states')
     print('6. Display initial state')
     print('7. Check if a sequence is accepted')
-    print('8. Check if FA is DFA')
     print('0. Exit')
     while True:
         option = int(input('Choose an option: '))
@@ -98,11 +97,6 @@ if __name__ == '__main__':
                 print('The word is accepted')
             else:
                 print('The word is not accepted')
-        elif option == 8:
-            if fa.check_if_dfa():
-                print('The FA is DFA')
-            else:
-                print('The FA is not DFA')
         elif option == 0:
             break
         else:
