@@ -5,7 +5,7 @@ b=read();
 c=read();
 
 s = "mere";
-
+a = 1;
 max=a;
 
 if b>=max:

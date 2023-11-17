@@ -1,0 +1,18 @@
+fa_specification  ::= "states:" states
+                    "alphabet:" alphabet
+                    "initial state:" initial_state
+                    "final states:" final_states
+                    "transitions:" transitions
+
+states            ::= state ("," state)*
+alphabet          ::= symbol ("," symbol)*
+initial_state     ::= state
+final_states      ::= state ("," state)*
+transitions       ::= transition ("," transition)*
+
+state             ::= letter (letter | digit)*
+symbol            ::= "0" | "1"
+transition        ::= state state symbol
+
+letter            ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
+digit             ::= "0" | "1" | ... | "9"

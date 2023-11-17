@@ -1,5 +1,6 @@
 from Pif import Pif
 from SymbolTable import SymbolTable
+from FA import Fa
 import re
 
 class Scanner:
@@ -36,14 +37,20 @@ class Scanner:
         return aux
 
     def isIdentifier(self, token):
-        regexIdentifier = r"^[a-zA-Z]([a-zA-Z]|[0-9])*$"
-        return re.match(regexIdentifier, token)
+        #regexIdentifier = r"^[a-zA-Z]([a-zA-Z]|[0-9])*$"
+        #return re.match(regexIdentifier, token)
+        fa = Fa("lab3/identifier.in")
+        fa.read_from_file()
+        return fa.check_accepted(token)
 
     def isIntegerConstant(self, token):
-        regexInteger = r"^(0|[-]?[1-9][0-9]*)$"
-        if re.match(regexInteger, str(token)):
-            return True
-        return False
+        #regexInteger = r"^(0|[-]?[1-9][0-9]*)$"
+        #if re.match(regexInteger, str(token)):
+        #    return True
+        #return False
+        fa = Fa("lab3/intConstant.in")
+        fa.read_from_file()
+        return fa.check_accepted(token)
         
     def isStringConstant(self,token):
         regexString = "^[a-zA-Z0-9_ ?:*^+=.!]*$"
