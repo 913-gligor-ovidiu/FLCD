@@ -63,7 +63,7 @@ class LL1:
                     productions = productionsForTerminal[lhs]
                     for production in productions:
                         if nonterminal == production[-1]:
-                            self.__follow[nonterminal] += self.__follow[lhs]
+                            self.__follow[nonterminal] += previous[lhs]
                         else:
                             index = production.index(nonterminal)
                             res = []
@@ -75,7 +75,7 @@ class LL1:
                             if '&' in res:
                                 res.remove('&')
                                 self.__follow[nonterminal] += res
-                                self.__follow[nonterminal] += self.__follow[lhs]
+                                self.__follow[nonterminal] += previous[lhs]
                             else:
                                 self.__follow[nonterminal] += res
                     self.__follow[nonterminal] = list(set(self.__follow[nonterminal]))   
