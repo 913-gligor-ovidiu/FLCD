@@ -16,8 +16,21 @@ class Grammar:
     def getStartSymbol(self):
         return self.__startSymbol
     
-    def getProductions(self):
+    def getProductions(self) -> dict:
         return self.__productions
+    
+    def getProductionThatContains(self, element):
+        res = {}
+        for lhs in self.__productions.keys():
+            res[lhs] = []
+            for list in self.__productions[lhs]:
+                if element in list:
+                    res[lhs].append(list)
+        new_res = {}
+        for key in res.keys():
+            if res[key] != []:
+                new_res[key] = res[key]
+        return new_res
     
     def readFromFile(self, filename):
         with open(filename, 'r') as f:
@@ -86,19 +99,28 @@ class Grammar:
             for list in self.__productions[lhs]:
                 for element in list:
                     if element not in self.__nonterminals and element not in self.__terminals:
-                        print("Element not found!")
+                        print(f"Element not found! {element}")
                         return False
         return True
     
 
 def main(): 
     grammar = Grammar()
-    grammar.readFromFile("lab5/files/g1.txt")
+    grammar.readFromFile("lab5-6-7/files/g1.txt")
     grammar.print_nonterminals()
     grammar.print_terminals()
     grammar.print_productions()
+    print(grammar.getProductions())
     grammar.print_production('A')
     print(grammar.checkCFG())
+    #print(grammar.getProductionThatContains('A'))
+    p = grammar.getProductionThatContains('B')
+    for key in p.keys():
+        prods = p[key]
+        for prod in prods:
+            print(f"{key} -> {prod}")
+    #print(grammar.getProductionThatContains('C'))
+    
 
 if __name__ == "__main__":
     main()
