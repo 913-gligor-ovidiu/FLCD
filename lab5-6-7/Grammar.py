@@ -6,6 +6,7 @@ class Grammar:
         self.__terminals = []
         self.__startSymbol = ''
         self.__productions = {}
+        self.__numberedProductions = {}
 
     def getNonterminals(self):
         return self.__nonterminals
@@ -18,6 +19,9 @@ class Grammar:
     
     def getProductions(self) -> dict:
         return self.__productions
+
+    def getNumberedProductions(self) -> dict:
+        return self.__numberedProductions
     
     def getProductionThatContains(self, element):
         res = {}
@@ -98,11 +102,24 @@ class Grammar:
                 return False
             for list in self.__productions[lhs]:
                 for element in list:
-                    if element not in self.__nonterminals and element not in self.__terminals:
+                    if element not in self.__nonterminals and element not in self.__terminals and element != '&':
                         print(f"Element not found! {element}")
                         return False
         return True
-    
+
+    def number_prodcutions(self):
+        i = 1
+        for lhs in self.__productions.keys():
+            self.__numberedProductions[lhs] = []
+            for list in self.__productions[lhs]:
+                self.__numberedProductions[lhs].append((i, list))
+                i += 1
+
+    def getProductionNumber(self, lhs, rhs):
+        for production in self.__numberedProductions[lhs]:
+            if production[1] == rhs:
+                return production[0]
+        return -1 
 
 def main(): 
     grammar = Grammar()
@@ -120,6 +137,7 @@ def main():
         for prod in prods:
             print(f"{key} -> {prod}")
     #print(grammar.getProductionThatContains('C'))
+    grammar.number_prodcutions()
     
 
 if __name__ == "__main__":
