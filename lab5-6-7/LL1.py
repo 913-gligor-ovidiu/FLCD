@@ -161,13 +161,12 @@ class LL1:
         output = ParserOutput()
         parent = []
         input_stack = []
-        working_stack = []
+        working_stack = [self.grammar.getStartSymbol(),'$']
         result_stack = []
+        sequence_of_productions = [working_stack[:]]
         for char in sequence:
             input_stack.append(char)
         input_stack.append('$')
-        working_stack.append(self.grammar.getStartSymbol())
-        working_stack.append('$')
         go  = True
         s = ''
         while go:
@@ -189,9 +188,11 @@ class LL1:
 
                 for char in reversed(cell[0]):
                     working_stack.insert(0, char)
+                sequence_of_productions.append(working_stack[:])
                        
             elif cell == 'pop':
                 terminal = working_stack.pop(0)
+                sequence_of_productions.append(working_stack[:])
                 if terminal != '&':
                     input_stack.pop(0)
 
@@ -207,10 +208,9 @@ class LL1:
                 print(f"Error at {input_stack} {working_stack}")
         if s == 'acc':
             print(f"Sequence is accepted, result stack: {result_stack}")
-            print(input_stack)
-            print(working_stack)
         else:
-            print(f"Sequence is not accepted, result stack: {result_stack}")    
+            print(f"Sequence is not accepted, result stack: {result_stack}")   
+        print(f"Sequence of productions: {sequence_of_productions}") 
         return output
             
         
